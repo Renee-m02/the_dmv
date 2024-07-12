@@ -45,7 +45,7 @@ RSpec.describe Vehicle do
 
   describe '#set_plate_type' do
     it 'checks for antique and electric' do
-      expect(@cruz.set_plate_type).to eq(:regular)
+      expect(@cruz.set_plate_type.plate_type).to eq(:regular)
       expect(@bolt.set_plate_type).to eq(:ev)
       expect(@camaro.set_plate_type).to eq(:antique)
     end
