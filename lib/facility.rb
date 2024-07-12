@@ -19,10 +19,12 @@ class Facility
     @services << service
   end
 
-  def register_vehicle(vehicle_name)
+  def register_vehicle(vehicle)
     # require 'pry'; binding.pry
-    @registration_date = Date.today
-    @registered_vehicles << vehicle_name
+    @registered_vehicles << vehicle
+    vehicle.set_registration_date
+    vehicle.set_plate_type
+    return @registered_vehicles
   end
 
 end
