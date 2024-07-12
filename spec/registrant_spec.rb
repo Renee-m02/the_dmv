@@ -8,7 +8,7 @@ RSpec.describe Registrant do
     # require 'pry'; binding.pry
   end
 
-  it '#registrant exists' do
+  it 'registrant exists' do
     expect(@registrant_1).to be_an_instance_of(Registrant)
     expect(@registrant_2).to be_an_instance_of(Registrant)
   end
