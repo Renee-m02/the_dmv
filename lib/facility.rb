@@ -20,7 +20,7 @@ class Facility
   end
 
   def register_vehicle(vehicle)
-    # require 'pry'; binding.pry
+    
     if @services.include?('Vehicle Registration') == true
       @registered_vehicles << vehicle
       vehicle.set_registration_date
@@ -40,7 +40,7 @@ class Facility
     elsif @registered_vehicles.empty? == false
       return @registered_vehicles
     end
-    # return @registered_vehicles
+    
   end
 
 end
