@@ -8,6 +8,8 @@ RSpec.describe Facility do
     @cruz = Vehicle.new({vin: '123456789abcdefgh', year: 2012, make: 'Chevrolet', model: 'Cruz', engine: :ice} )
     @bolt = Vehicle.new({vin: '987654321abcdefgh', year: 2019, make: 'Chevrolet', model: 'Bolt', engine: :ev} )
     @camaro = Vehicle.new({vin: '1a2b3c4d5e6f', year: 1969, make: 'Chevrolet', model: 'Camaro', engine: :ice} )
+    @registrant_1 = Registrant.new('Bruce', 18, true )
+    @registrant_2 = Registrant.new('Penny', 15 )
   end
 
   describe '#initialize' do
@@ -55,6 +57,24 @@ RSpec.describe Facility do
       expect(@facility_1.collected_fees).to eq(125)
       @facility_1.register_vehicle(@bolt)
       expect(@facility_1.collected_fees).to eq(325)
+    end
+  end
+
+  describe '#administer_written_test' do
+    it 'offers a written test' do
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(false)
+      @facility_1.add_service('Written Test')
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(true)
+    end
+    it 'changes :written from flase to true when requirements are met' do
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(false)
+      @facility_1.add_service('Written Test')
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(true)
+    end
+    it 'does not change from false to true when requirements are not met' do
+      expect(@facility_1.administer_written_test(@registrant_2)).to eq(false)
+      @facility_1.add_service('Written Test')
+      expect(@facility_1.administer_written_test(@registrant_2)).to eq(false)
     end
   end
 
