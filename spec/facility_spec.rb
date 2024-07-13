@@ -88,9 +88,24 @@ RSpec.describe Facility do
       expect(@facility_1.administer_road_test(@registrant_1)).to eq(true)
     end
     it 'only gives licenses to registrants that meet reguirements' do
-      @facility_1.add_service('Written Test')
       @facility_1.add_service('Road Test')
       expect(@facility_1.administer_road_test(@registrant_3)).to eq(false)
+    end
+  end
+
+  describe '#renew_drivers_license' do
+    it 'offers a renewal service' do
+      @facility_1.add_service('Written Test')
+      expect(@facility_1.administer_written_test(@registrant_1)).to eq(true)
+      @facility_1.add_service('Road Test')
+      expect(@facility_1.administer_road_test(@registrant_1)).to eq(true)
+      expect(@facility_1.renew_drivers_license(@registrant_1)).to eq(false)
+      @facility_1.add_service('Renew License')
+      expect(@facility_1.renew_drivers_license(@registrant_1)).to eq(true)
+    end
+    it 'does not renew if requirements are not met' do
+      @facility_1.add_service('Renew License')
+      expect(@facility_1.renew_drivers_license(@registrant_3)).to eq(false)
     end
   end
 
