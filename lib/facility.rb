@@ -21,10 +21,26 @@ class Facility
 
   def register_vehicle(vehicle)
     # require 'pry'; binding.pry
-    @registered_vehicles << vehicle
-    vehicle.set_registration_date
-    vehicle.set_plate_type
-    return @registered_vehicles
+    if @services.include?('Vehicle Registration') == true
+      @registered_vehicles << vehicle
+      vehicle.set_registration_date
+      vehicle.set_plate_type
+
+      if vehicle.antique? == true
+        @collected_fees += 25
+      elsif vehicle.electric_vehicle? == true
+        @collected_fees += 200
+      else
+        @collected_fees += 100
+      end
+    end
+
+    if @registered_vehicles.empty? == true
+      return nil
+    elsif @registered_vehicles.empty? == false
+      return @registered_vehicles
+    end
+    # return @registered_vehicles
   end
 
 end

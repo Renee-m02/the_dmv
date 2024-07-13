@@ -33,13 +33,28 @@ RSpec.describe Facility do
   describe '#register vehicle' do
     it 'has registered vehicles' do
       expect(@facility_1.registered_vehicles).to eq([])
+      @facility_1.add_service('Vehicle Registration')
       expect(@facility_1.register_vehicle(@cruz)).to eq([@cruz])
+    end
+
+    it 'only registers a vehicle if the facility offers that service' do
+      expect(@facility_2.registered_vehicles).to eq([])
+      expect(@facility_2.register_vehicle(@bolt)).to eq(nil)
+      expect(@facility_2.registered_vehicles).to eq([])
+      expect(@facility_2.collected_fees).to eq(0)
     end
   end
 
   describe '#collected fees' do
     it 'has collected fees' do
       expect(@facility_1.collected_fees).to eq(0)
+      @facility_1.add_service('Vehicle Registration')
+      @facility_1.register_vehicle(@cruz)
+      expect(@facility_1.collected_fees).to eq(100)
+      @facility_1.register_vehicle(@camaro)
+      expect(@facility_1.collected_fees).to eq(125)
+      @facility_1.register_vehicle(@bolt)
+      expect(@facility_1.collected_fees).to eq(325)
     end
   end
 
