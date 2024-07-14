@@ -24,9 +24,9 @@ RSpec.describe VehicleFactory do
             expect(co_facilities[2].address).to eq("3698 W. 44th Avenue")
         end
         it 'sorts info from others states into key value pairs' do
-            ny_facilities =@facility_catalog.catalog_facilities(@new_york_facilities)
+            ny_facilities = @facility_catalog.catalog_facilities(@new_york_facilities)
             expect(ny_facilities[0]).to be_an_instance_of(Facility)
-            require 'pry'; binding.pry
+            # require 'pry'; binding.pry
         end
     end
 
