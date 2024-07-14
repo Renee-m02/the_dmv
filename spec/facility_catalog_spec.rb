@@ -27,6 +27,9 @@ RSpec.describe VehicleFactory do
             ny_facilities = @facility_catalog.catalog_facilities(@new_york_facilities)
             expect(ny_facilities[0]).to be_an_instance_of(Facility)
             # require 'pry'; binding.pry
+            expect(ny_facilities[0].name).to eq("HUNTINGTON")
+            expect(ny_facilities[7].phone).to eq("7184774820")
+            expect(ny_facilities[3].address).to eq("855 CENTRAL AVENUE")
         end
     end
 
