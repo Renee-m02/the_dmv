@@ -15,7 +15,6 @@ RSpec.describe VehicleFactory do
     describe '#create_vehicle' do
         it 'sorts wa info into correct key value pairs' do
             wa_data = @factory.create_vehicles(@wa_ev_registrations)
-            # require 'pry'; binding.pry
             expect(wa_data[0]).to be_an_instance_of(Vehicle)
             expect(wa_data[6]).to be_an_instance_of(Vehicle)
         end
