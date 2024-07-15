@@ -9,6 +9,7 @@ class FacilityCatalog
     def catalog_facilities(dmv_offices)
         dmv_offices.map do |office|
             office_info = {}
+            
             if office[:dmv_office]
                 office_info[:name] = office[:dmv_office]
             elsif office[:office_name]
@@ -16,6 +17,7 @@ class FacilityCatalog
             elsif office[:name]
                 office_info[:name] = office[:name]
             end
+            
             if office[:address_li]
                 office_info[:address] = office[:address_li]
             elsif office[:street_address_line_1]
@@ -23,6 +25,7 @@ class FacilityCatalog
             elsif office[:address1]
                 office_info[:address] = office[:address1]
             end
+           
             if office[:phone]
                 office_info[:phone] = office[:phone]
             elsif office[:public_phone_number]
