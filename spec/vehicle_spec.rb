@@ -38,6 +38,7 @@ RSpec.describe Vehicle do
   describe '#set_registration_date' do
     it 'adds the current date do' do
       @facility_1 = Facility.new({name: 'DMV Tremont Branch', address: '2855 Tremont Place Suite 118 Denver CO 80205', phone: '(720) 865-4600'})
+      @facility_1.add_service('Vehicle Registration')
       expect(@facility_1.register_vehicle(@cruz)).to eq([@cruz])
       expect(@cruz.registration_date).to eq(Date.today)
     end
@@ -45,7 +46,7 @@ RSpec.describe Vehicle do
 
   describe '#set_plate_type' do
     it 'checks for antique and electric' do
-      expect(@cruz.set_plate_type.plate_type).to eq(:regular)
+      expect(@cruz.set_plate_type).to eq(:regular)
       expect(@bolt.set_plate_type).to eq(:ev)
       expect(@camaro.set_plate_type).to eq(:antique)
     end
