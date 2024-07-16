@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe VehicleFactory do
     before(:each) do
-        @co_dmv_office_locations = DmvDataService.new.co_dmv_office_locations
+        # @co_dmv_office_locations = DmvDataService.new.co_dmv_office_locations
         @new_york_facilities = DmvDataService.new.ny_dmv_office_locations
         @missouri_facilities = DmvDataService.new.mo_dmv_office_locations
         @facility_catalog = FacilityCatalog.new
@@ -15,11 +15,11 @@ RSpec.describe VehicleFactory do
     end
 
     describe '#create_vehicle' do
-        xit 'sorts colorado info into correct key value pairs' do
-            co_facilities = @facility_catalog.catalog_facilities(@co_dmv_office_locations)
-            expect(co_facilities[0]).to be_an_instance_of(Facility)
-            expect(co_facilities).to be_a(Array)
-        end
+        # xit 'sorts colorado info into correct key value pairs' do
+        #     co_facilities = @facility_catalog.catalog_facilities(@co_dmv_office_locations)
+        #     expect(co_facilities[0]).to be_an_instance_of(Facility)
+        #     expect(co_facilities).to be_a(Array)
+        # end
         it 'sorts info for new york facilities into key value pairs' do
             ny_facilities = @facility_catalog.catalog_facilities(@new_york_facilities)
             expect(ny_facilities).to be_a(Array)
